@@ -1,0 +1,22 @@
+
+fHelmholtz    -2.75154924314e+01
+pressure       3.24415250701e+01
+
+Free energy components:
+fIdeal        -3.44570175013e+01
+fInter         6.94152506994e+00
+
+Polymers:
+             phi                 mu          
+    0   5.00000000000e-01   2.74031671637e+01
+
+Solvents:
+             phi                 mu          
+    0   5.00000000000e-01  -3.51022037728e-01
+
+Lattice parameters:
+        1.62132469978e+01
+
+
+
+

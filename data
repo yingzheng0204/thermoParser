@@ -1,0 +1,65 @@
+System{
+  Mixture{
+    nMonomer                               2
+    monomers[           
+                         1.00000000e+00
+                         1.00000000e+00
+    ]
+    nPolymer                               1
+    Polymer{
+      type                              linear
+      nBlock                                 2
+      blocks[             
+                                              0    4.000000000000e-01
+                                              1    6.000000000000e-01
+      ]
+      phi                   1.000000000000e+00
+    }
+    ds                    5.000000000000e-03
+  }
+  Interaction{
+    chi(                
+                           0    0   0.000000000000e+00
+                           1    0   2.000000000000e+01
+                           1    1   0.000000000000e+00
+    )
+  }
+  Domain{
+    mesh                                        72
+    lattice                         lamellar
+    groupName                            P_1
+  }
+  AmIteratorFilm{
+    epsilon               1.000000000000e-12
+    maxItr                              2500
+    maxHist                               50
+    isFlexible                             0
+    normalVecId                            0
+    interfaceThickness    1.500000000000e-01
+    wallThickness         3.000000000000e-01
+    chiBottom[          
+                          1.000000000000e+01
+                          1.000000000000e+01
+    ]
+    chiTop[             
+                          0.000000000000e+00
+                          0.000000000000e+00
+    ]
+  }
+}
+
+fHelmholtz     4.31931841960e+00
+pressure      -1.65411295702e+01
+
+Free energy components:
+fIdeal         2.29455605599e+00
+fInter         1.91449115374e+00
+fExt           1.10271209869e-01
+
+Polymers:
+             phi                 mu          
+    0   1.00000000000e+00  -1.22218111506e+01
+
+Lattice parameters:
+        2.00000000000e+00
+
