@@ -1,7 +1,29 @@
-
+'''
+File Contents:
+	class Species:
+		A Sppecies object stores the phi and mu values of a single polymer or 
+		solvent. It also stores whether it has index from the reading.
+	class Thermo:
+		A Thermo object can be identified by fHelmholtz value. It can parse a 
+		thermo file and stores the contents within in it to be accessed and
+		modified.
+'''
 
 class Species:
 	'''
+	Purpose:
+		The class represents the object type that stores the phi and mu values
+		for the single species.
+	Instance variables:
+		hasIndex: boolean to store if the single species has index
+		phi: float that stores the phi value of the single species
+		mu: float that sotres the mu value of the single species
+	Methods:
+		__init__(self, l):
+			the constructor of the Species object for initiation, with one
+			argument:
+				l: the list of the read line after spliting
+			that initiate the all three instance variables of the Species object
 	'''
 	def __init__(self, l):
 		if len(l) == 3:
@@ -15,6 +37,41 @@ class Species:
 
 class Thermo:
 	'''
+	Purpose:
+		The class represents the Thermo file
+	Instance variables:
+		fHelmholtz: 
+		pressure:
+		fIdeal:
+		fInter:
+		fExt:
+		Polymers: 
+			a list of Spicies objects that represent polymers 
+		Solvents:
+			a list of Spicies objects that represent solvents
+		LatticeParameters:
+			a list of floats represents all Lattice parameters
+		tableLabel: 
+			a string that represents the label for both Polymers and Solvents
+	Methods:
+		__init__(self, filename=None):
+			the constructor of the Thermo object for initiation with one
+			argument:
+				filename: 
+					a string represents the filename that needed to be read
+		read(self, openFile):
+			method to read the open Thermo file, openFile as the argument, line
+			by line and update the read items
+		skipEmptyLine(self, openFile):
+			method to skip the empty line read from the file, with openFile as
+			argument
+		writeOut(self, filename):
+			method to write out the stored Thermo file to a specific txt file
+			with the name of the argument filename
+		writeOutStirng(self):
+			return the string for writting out
+
+
 	'''
 	def __init__(self, filename=None):
 		self.fHelmholtz = None
@@ -25,7 +82,7 @@ class Thermo:
 		self.Polymers = None
 		self.Solvents = None
 		self.LatticeParameters = None
-		self.tableLable = None
+		self.tableLabel = None
 
 		if filename != None:
 			with open(filename) as f:
@@ -58,7 +115,7 @@ class Thermo:
 
 			if line == 'Polymers:\n':
 				self.Polymers = []
-				self.tableLable = openFile.readline()
+				self.tableLabel = openFile.readline()
 				line = openFile.readline()
 				while line != '\n':
 					l = line.split()
@@ -123,7 +180,7 @@ class Thermo:
 			s += '\n'
 
 		s += 'Polymers:\n'
-		s += self.tableLable
+		s += self.tableLabel
 		if self.Polymers[0].hasIndex == True:
 			for i in range(len(self.Polymers)):
 				p = f'{self.Polymers[i].phi:.11e}'
@@ -138,7 +195,7 @@ class Thermo:
 
 		if self.Solvents != None:
 			s += 'Solvents:\n'
-			s += self.tableLable
+			s += self.tableLabel
 			if self.Solvents[0].hasIndex == True:
 				for i in range(len(self.Polymers)):
 					p = f'{self.Solvents[i].phi:.11e}'
