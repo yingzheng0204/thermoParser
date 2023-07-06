@@ -40,15 +40,15 @@ class Thermo:
 	Purpose:
 		The class represents the Thermo file
 	Instance variables:
-		fHelmholtz: 
-		pressure:
-		fIdeal:
-		fInter:
-		fExt:
+		fHelmholtz: Helmholtz free energy per monomer, unit of kT
+		pressure: nondimensionalized pressure, Pv/kT (v = monomer reference volume)
+		fIdeal: ideal gas component of free energy
+		fInter: monomer interaction component of free energy 
+		fExt: external field component of free energy
 		Polymers: 
-			a list of Spicies objects that represent polymers 
+			a list of Species objects that represent polymers 
 		Solvents:
-			a list of Spicies objects that represent solvents
+			a list of Species objects that represent solvents
 		LatticeParameters:
 			a list of floats represents all Lattice parameters
 		tableLabel: 
@@ -224,7 +224,7 @@ class Thermo:
 		return s
 
 t = Thermo('dat')
-# print(f'{t.fHelmholtz:.11e}')
+print(t.fHelmholtz)
 t.writeOut('datOut')
 
 t2 = Thermo('thermo')
